@@ -54,14 +54,21 @@ func main() {
 		fmt.Println("Usage: go run main.go <file-path>")
 		return
 	}
-    defer media.Release()
+        
+	//set media from filepath
+	media, err := player.LoadMediaFromPath(args[0])
+	if err != nil {
+		fmt.Println("Error loading media:", err)
+		return
+	}
+	defer media.Release()
 
-    //start playing
-    if err = player.Play(); err != nil {
-    	fmt.Println("Error playing media:", err)
-    	return
-    }
+        //start playing
+        if err = player.Play(); err != nil {
+    	    fmt.Println("Error playing media:", err)
+    	    return
+        }
 
-    //wait for playback to end/exit
-    <-quit
+        //wait for playback to end/exit
+        <-quit
 }
