@@ -8,7 +8,7 @@ import (
 
 func main() {
 	//initialize libVLC
-	err := vlc.Init("--no-video", "--quiet")
+	err := vlc.Init("--video-wallpaper","--quiet")
 	if err != nil {
 		fmt.Println("Error initializing libVLC:", err)
 		return
