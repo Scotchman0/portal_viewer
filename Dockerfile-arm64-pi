@@ -1,0 +1,17 @@
+#DOCKERFILE FOR CONTAINER ON ARM SYSTEMS --> RASPBERRY PI ONLY
+#WIP --> placing on hold until I get the actual code logic sorted then will return to this
+
+FROM docker.io/balenalib/raspberry-pi-golang
+#apt install config:
+RUN apt update && apt-get install libvlc-dev vlc-plugin-base vlc-plugin-video-output vlc vlc-plugin-access-extra -y
+
+RUN mkdir /opt
+WORKDIR /opt
+
+#cant run VLC as root so must become a different user:
+RUN useradd -s /bin/bash portal
+
+#import the project scripts for local execution in the container
+COPY ./* /opt/
+
+#TODO: set entrypoint
