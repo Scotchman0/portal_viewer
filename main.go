@@ -63,12 +63,12 @@ func main() {
 	}
 	defer media.Release()
 
-        //start playing
-        if err = player.Play(); err != nil {
-    	    fmt.Println("Error playing media:", err)
-    	    return
-        }
+    //start playing
+    if err = player.Play(); err != nil {
+    	fmt.Println("Error playing media:", err)
+    	return
+    }
 
-        //wait for playback to end/exit
-        <-quit
+    //wait for playback to end/exit
+    <-quit
 }
