@@ -36,7 +36,7 @@ func main() {
 	eventCallback := func(event vlc.Event, userData interface{}) {
 		switch event {
 		case vlc.MediaPlayerEndReached:
-			fmt.Printlin("Playback ended")
+			fmt.Println("Playback ended")
 			close(quit)
 		}
 	}
