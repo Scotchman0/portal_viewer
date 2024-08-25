@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	//initialize libVLC
+	//initialize libVLC (here's where we can set our parameters on the media execution as well)
 	err := vlc.Init("--video-wallpaper","--quiet")
 	if err != nil {
 		fmt.Println("Error initializing libVLC:", err)
@@ -40,7 +40,8 @@ func main() {
 			close(quit)
 		}
 	}
-
+    
+    //define eventID
 	eventID, err := manager.Attach(vlc.MediaPlayerEndReached, eventCallback, nil)
 	if err != nil {
 		fmt.Println("Error attaching event:", err)
